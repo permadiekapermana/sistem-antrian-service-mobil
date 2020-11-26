@@ -1,0 +1,2 @@
+Dalam penelitian ini tidak membahas sistem booking service, hanya antrian
+Dalam penelitian ini tidak membahas API WhatsApp, hanya fitur ClicktoChat
