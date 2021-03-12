@@ -69,7 +69,17 @@ default:
             <td><?= $r[no_hp] ?></td>
             <td><?= $r[nopol] ?></td>
             <td><?= $r[blokir] ?></td>
+            <?php
+            if ( $r[blokir] == 'N') {
+            ?>
             <td><a href="<?php echo"?page=DataPelanggan&act=detailpelanggan&id=$r[id_user]"; ?>" class="btn btn-sm btn-info"> Detail </a> <a href="<?php echo"$aksi?page=DataPelanggan&act=blokir&id=$r[id_user]"; ?>" <?php echo "onClick=\"return confirm('Yakin ingin blokir pelanggan ? Data pelanggan yang diblokir tidak dapat lagi mengakses sistem !')\" "; ?> class="btn btn-sm btn-danger"> Blokir </a></td>
+            <?php
+            } else {
+            ?>
+            <td><a href="<?php echo"?page=DataPelanggan&act=detailpelanggan&id=$r[id_user]"; ?>" class="btn btn-sm btn-info"> Detail </a> <a href="<?php echo"$aksi?page=DataPelanggan&act=unblokir&id=$r[id_user]"; ?>" <?php echo "onClick=\"return confirm('Yakin ingin buka blokir pelanggan ? Data pelanggan yang dibuka blokirnya akan dapat lagi mengakses sistem !')\" "; ?> class="btn btn-sm btn-success"> Buka Blokir </a></td>
+            <?php
+            }
+            ?>
         <?php
         $no++;
         }

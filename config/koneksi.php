@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 // panggil fungsi validasi xss dan injection
 require_once('fungsi_validasi.php');
 

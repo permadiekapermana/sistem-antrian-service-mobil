@@ -46,7 +46,7 @@ if ($ketemu > 0){
   header('location:menu.php?page=Dashboard');
 }
 elseif ($ketemu2 > 0){
-  echo "<script>alert('Anda tidak lagi memiliki akses ke dalam Sistem!');history.go(-1)</script>";
+  echo "<script>alert('Anda tidak lagi memiliki akses ke dalam Sistem! Untuk mendapat hak akses kembali silahkan hubungi nomor Admin di 089xxxxxxxxx');history.go(-1)</script>";
 }
 else{
   echo "<script>alert('Username atau Password yang anda masukkan salah!');history.go(-1)</script>";
