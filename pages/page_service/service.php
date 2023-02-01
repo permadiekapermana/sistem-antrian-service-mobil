@@ -111,7 +111,7 @@ default:
         INNER JOIN `pos` ON `pos`.`id_pos` = `service`.`id_pos`
         INNER JOIN `mobil` ON `mobil`.`id_mobil` = `service`.`id_mobil`
         INNER JOIN `jasa_service` ON `paket`.`id_jasa` = `jasa_service`.`id_jasa`
-        WHERE (status='Dalam Antrian' OR status='Selanjutnya') ORDER BY jam_mulai ASC");                    
+        WHERE (status='Dalam Antrian' OR status='Selanjutnya') AND jam_selesai >= CURRENT_TIME() ORDER BY jam_mulai ASC");                    
         $no = 1;
         while($r=mysql_fetch_array($tampil)){
         ?>
@@ -128,7 +128,14 @@ default:
             <?php
             if($r['status']=='Selanjutnya'){
             echo"
-            <td width='5%'><a href='?page=DataService&act=konfirm&id=$r[id_service]&pos=$r[id_pos]' class='btn btn-sm btn-info'> Proses </a></td>
+            <td width='5%'>
+              <div>
+                <a href='https://api.whatsapp.com/send?phone=$r[no_hp]&text=Pelanggan+Bengkel+Body+Cat+Udin+Jaya%2C+Mobil+dengan+Nomor+Polisi+$r[nopol]+telah+memasuki+antrian+pada+pukul+$r[jammulai].+Dimohon+ke+bengkel+untuk+service.+Terima+kasih.' target='_blank' class='btn btn-sm btn-success'> Hubungi Pelanggan </a>
+              </div>
+              <div>
+                <a href='?page=DataService&act=konfirm&id=$r[id_service]&pos=$r[id_pos]' class='btn btn-sm btn-info'> Proses </a>
+              </div>
+              </td>
             ";
             }
             else{
