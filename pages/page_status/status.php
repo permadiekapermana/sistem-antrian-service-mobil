@@ -54,6 +54,8 @@ $harga_jasa    = mysql_fetch_array($jasa_service);
   </div>
   <div class="card-body">
     <form action='<?php echo"$aksi?page=DaftarService&act=input";?>' method='POST' enctype='multipart/form-data' class='form-horizontal'>
+    <button class='float-right btn btn-sm btn-info' onclick="printDiv('printMe')">Print Antiran</button>
+    <br>
     <div class='col-lg-12'>
         <div class='row form-group'>
           <div class='col col-md-12'><label for='bahan' class='form-control-label'><b>Detail Paket</b></label></div>
@@ -73,7 +75,8 @@ $harga_jasa    = mysql_fetch_array($jasa_service);
         <div class='row form-group'>
         <div class='col col-md-3'><label for='nama_paket' class='form-control-label'>Lama Pengerjaan</label></div>
             <div class='col-9 col-md-6'><label for='id_paket' class='form-control-label'><?php echo" $harga_jasa[lama_pengerjaan] Menit "; ?></label></div>
-        </div>   
+        </div>
+        <div id='printMe'>
         <div class='row form-group'>
           <div class='col col-md-12'><label for='bahan' class='form-control-label'><b>Detail Service</b></label></div>
         </div>
@@ -120,6 +123,7 @@ $harga_jasa    = mysql_fetch_array($jasa_service);
               <?= $status ?>
             </label></div>
         </div>
+        </div>
         <div class='row form-group'>
           <div class='col col-md-12'><label for='bahan' class='form-control-label'><b>Detail Biaya Service</b></label></div>
         </div>                
@@ -159,3 +163,17 @@ $harga_jasa    = mysql_fetch_array($jasa_service);
 }
 
 ?>
+
+<script>
+		function printDiv(divName){
+			var printContents = document.getElementById(divName).innerHTML;
+			var originalContents = document.body.innerHTML;
+
+			document.body.innerHTML = printContents;
+
+			window.print();
+
+			document.body.innerHTML = originalContents;
+
+		}
+</script>
