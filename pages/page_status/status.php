@@ -107,7 +107,18 @@ $harga_jasa    = mysql_fetch_array($jasa_service);
         </div>
         <div class='row form-group'>
         <div class='col col-md-3'><label for='nama_paket' class='form-control-label'>Status Service</label></div>
-            <div class='col-9 col-md-6'><label for='id_paket' class='form-control-label'><?= $r[status] ?></label></div>
+            <div class='col-9 col-md-6'>
+            <label for='id_paket' class='form-control-label'>
+              <?php
+                $time = date('H:i:s');
+                if($r[status] == 'Selanjutnya' AND $r[jam_selesai] < $time) {
+                  $status = "Kadaluwarsa";
+                } else {
+                  $status = $r[status];
+                }
+              ?>
+              <?= $status ?>
+            </label></div>
         </div>
         <div class='row form-group'>
           <div class='col col-md-12'><label for='bahan' class='form-control-label'><b>Detail Biaya Service</b></label></div>
